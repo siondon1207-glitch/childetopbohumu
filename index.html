@@ -1,23 +1,972 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InsuranceAgency",
+      "name": "스마트 어린이보험 비교 전문 플랫폼",
+      "alternateName": "2026 자녀보험 청년보험 통합 가이드",
+      "image": "https://images.pexels.com/photos/8489650/pexels-photo-8489650.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "url": "https://insurance.reliabledone.com/children-insurance",
+      "telephone": "1661-5678",
+      "priceRange": "₩₩",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "서울특별시 강남구 테헤란로 456",
+        "addressLocality": "서울시",
+        "addressRegion": "서울",
+        "postalCode": "06180",
+        "addressCountry": "KR"
+      },
+      "description": "2026년 최신 어린이보험 추천 가이드. 태아, 0세, 5세, 15세 자녀보험과 20세, 30세, 35세 청년보험 종류별 장단점 비교, 평균 가격 계산기 활용법, 구체적인 최저가 저렴한곳 설계 및 사은품 혜택 정보 제공.",
+      "sameAs": [
+        "https://insurance.reliabledone.com",
+        "https://namu.wiki/w/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98"
+      ]
+    }
+    </script>
+
+    <style>
+      /* 변수 선언 및 기본 테마 설정 */
+      :root {
+        --primary-color: #4a6fa5;
+        --primary-light: #eef4fc;
+        --secondary-color: #8fa6cb;
+        --accent-color: #e28f8f;
+        --accent-light: #fdf5f5;
+        --bg-color: #f7f9fc;
+        --card-bg: #ffffff;
+        --text-color: #333a42;
+        --text-muted: #6b7a8a;
+        --border-color: #e1e7f0;
+        --shadow-sm: 0 4px 10px rgba(74, 111, 165, 0.03);
+        --shadow-md: 0 8px 24px rgba(74, 111, 165, 0.06);
+        --radius-lg: 16px;
+        --radius-md: 10px;
+        --font-main: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      /* 기본 스타일 초기화 */
+      body {
+        font-family: var(--font-main);
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.8;
+        letter-spacing: -0.02em;
+      }
+
+      header {
+        background: linear-gradient(135deg, #f2f6fc 0%, #e3edf7 100%);
+        padding: 50px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .header-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c4a75;
+        margin-top: 0;
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+
+      .header-sub {
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto 30px auto;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 30px auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      /* 내비게이션 바 */
+      nav {
+        background-color: var(--card-bg);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        padding: 10px;
+        margin-bottom: 40px;
+        border: 1px solid var(--border-color);
+      }
+
+      .nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 8px 16px;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: background-color 0.2s, color 0.2s;
+      }
+
+      .nav-link:hover {
+        background-color: var(--primary-light);
+        color: #2c4a75;
+      }
+
+      /* 섹션 스타일 공통 */
+      section {
+        background-color: var(--card-bg);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        padding: 40px;
+        margin-bottom: 40px;
+        border: 1px solid var(--border-color);
+        box-sizing: border-box;
+      }
+
+      .anchor {
+        display: block;
+        position: relative;
+        top: -40px;
+        visibility: hidden;
+      }
+
+      h2 {
+        font-size: 1.85rem;
+        color: #2c4a75;
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-weight: 600;
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        color: #3b5e8c;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        border-left: 4px solid var(--primary-color);
+        padding-left: 12px;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 18px;
+        font-size: 1.05rem;
+        color: var(--text-color);
+      }
+
+      ul, ol {
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+      }
+
+      /* 테이블 스타일 */
+      .table-container {
+        overflow-x: auto;
+        margin: 25px 0;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        min-width: 600px;
+      }
+
+      th, td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      th {
+        background-color: var(--primary-light);
+        color: #2c4a75;
+        font-weight: 600;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:nth-child(even) {
+        background-color: #fafbfc;
+      }
+
+      /* 하이라이트 박스 */
+      .info-box {
+        background-color: var(--primary-light);
+        border-left: 5px solid var(--primary-color);
+        padding: 20px;
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        margin: 25px 0;
+      }
+
+      .info-box h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #2c4a75;
+        font-size: 1.15rem;
+      }
+
+      .alert-box {
+        background-color: var(--accent-light);
+        border-left: 5px solid var(--accent-color);
+        padding: 20px;
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        margin: 25px 0;
+      }
+
+      .alert-box h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #8c3b3b;
+        font-size: 1.15rem;
+      }
+
+      /* 이미지 컨테이너 */
+      .image-container {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .image-container img {
+        width: 100%;
+        max-width: 880px;
+        height: auto;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* CTA 버튼 */
+      .btn-cta {
+        display: inline-block;
+        padding: 16px 36px;
+        background-color: var(--primary-color);
+        color: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 30px;
+        box-shadow: 0 6px 16px rgba(74, 111, 165, 0.25);
+        transition: background-color 0.2s, transform 0.2s;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .btn-cta:hover {
+        background-color: #3b5e8c;
+        transform: translateY(-2px);
+      }
+
+      /* 가로형 차트 스타일 */
+      .chart-container {
+        background-color: #fdfdfd;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 25px;
+        margin: 25px 0;
+      }
+
+      .chart-title {
+        font-weight: 600;
+        color: #2c4a75;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .chart-row {
+        margin-bottom: 15px;
+      }
+
+      .chart-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .chart-bar-bg {
+        background-color: #f0f4f8;
+        height: 16px;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .chart-bar-fill {
+        height: 100%;
+        border-radius: 8px;
+        background-color: var(--primary-color);
+      }
+
+      .chart-bar-fill.accent {
+        background-color: var(--accent-color);
+      }
+
+      /* FAQ 아코디언 */
+      .faq-item {
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px 0;
+      }
+
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+
+      .faq-question {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #2c4a75;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      .faq-answer {
+        font-size: 1.02rem;
+        color: var(--text-color);
+        padding-left: 10px;
+      }
+
+      /* 문의 양식 스타일 */
+      .form-container {
+        background-color: #fafbfc;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 30px;
+        margin-top: 30px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .form-group label {
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: var(--text-color);
+      }
+
+      .form-group label span.required {
+        color: #d9534f;
+        margin-left: 4px;
+        font-size: 0.8rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        font-size: 1rem;
+        background-color: #ffffff;
+        color: var(--text-color);
+        transition: border-color 0.2s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary-color);
+        outline: none;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+      }
+
+      .form-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      .form-checkbox input {
+        margin-top: 5px;
+        width: 18px;
+        height: 18px;
+      }
+
+      .form-checkbox label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .form-submit-container {
+        text-align: center;
+      }
+
+      .form-submit-btn {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        border: none;
+        padding: 16px 40px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 6px 16px rgba(74, 111, 165, 0.25);
+        transition: background-color 0.2s, transform 0.2s;
+      }
+
+      .form-submit-btn:hover {
+        background-color: #3b5e8c;
+        transform: translateY(-2px);
+      }
+
+      /* 외부 링크 박스 */
+      .links-box {
+        background-color: #f0f4f8;
+        border-radius: var(--radius-md);
+        padding: 25px;
+        margin-top: 30px;
+        border: 1px solid var(--border-color);
+      }
+
+      .links-box h4 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #2c4a75;
+        font-size: 1.1rem;
+      }
+
+      .links-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .links-box li {
+        margin-bottom: 12px;
+      }
+
+      .links-box li:last-child {
+        margin-bottom: 0;
+      }
+
+      .links-box a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: color 0.2s;
+      }
+
+      .links-box a:hover {
+        color: #2c4a75;
+        text-decoration: underline;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: #eef2f7;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      /* 반응형 디자인 최적화 */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.95rem;
+        }
+
+        section {
+          padding: 25px 20px;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+        }
+
+        .btn-cta {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1>어린이보험 추천 및 비교 가이드: 2026년 최신 청년보험 통합 분석</h1>
+            <p class="header-sub">자녀를 위한 순수 0세~15세 어린이보험 종류와 20대, 30대 청년층을 위한 어른이보험 맞춤형 평균 가격, 예상 요금제 및 최저가 비교법까지 완벽 분석해 드립니다.</p>
+            <a class="btn-cta" href="#consulting-form">우리 자녀 맞춤형 무료 비교 견적 상담하기</a>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <div class="image-container">
+            <img src="https://images.pexels.com/photos/8489650/pexels-photo-8489650.jpeg?auto=compress&cs=tinysrgb&w=800" alt="안정된 가정을 상징하는 가족과 아이 이미지">
+        </div>
+
+        <nav aria-label="메인 메뉴">
+            <ul class="nav-list">
+                <li><a href="#introduction" class="nav-link">개요 및 2026 트렌드</a></li>
+                <li><a href="#age-comparison" class="nav-link">연령별 정밀 비교</a></li>
+                <li><a href="#versus-comparison" class="nav-link">어린이 VS 청년보험</a></li>
+                <li><a href="#cost-calculator" class="nav-link">예상 비용 및 계산기</a></li>
+                <li><a href="#community-reviews" class="nav-link">커뮤니티 후기</a></li>
+                <li><a href="#benefits-event" class="nav-link">가입 혜택 가이드</a></li>
+                <li><a href="#faq-section" class="nav-link">자주 묻는 질문 FAQ</a></li>
+                <li><a href="#consulting-form" class="nav-link">실시간 견적 상담</a></li>
+            </ul>
+        </nav>
+
+        <!-- 섹션 1: 개요 및 2026 트렌드 -->
+        <section>
+            <span id="introduction" class="anchor"></span>
+            <h2>어린이보험, 왜 미리 비교하고 준비해야 할까요?</h2>
+            <p>아이가 성장하면서 부모가 겪는 가장 큰 고민 중 하나는 바로 자녀의 건강과 안전입니다. 이에 대비해 많은 소비자들이 자녀가 태어나기 전 태아 시기부터 어린이보험 종류를 꼼꼼하게 알아보고 준비하고 있습니다. 2026년 현재 어린이보험 시장은 저출산 기조에 부응하는 다채로운 국가 시책 및 금융 혜택과 맞물리며 한층 더 세분화되고 지능적으로 고도화되었습니다.</p>
+            
+            <p>특히 2026년 4월부터 단계적으로 도입된 저출산 극복 지원 3종 세트의 영향으로 출산일로부터 1년 이내의 영유아 가구나 육아휴직 기간 중인 가입자는 보험료 추가 할인 및 납입 유예 제도의 직접적인 혜택을 누릴 수 있습니다. 이러한 금융 지원책 덕분에 부담을 한층 덜고 든든한 평생 자산을 설계할 기회가 생겼습니다.</p>
+            
+            <div class="info-box">
+                <h4>최신 트렌드: AI 기술을 활용한 자녀 보험 진단</h4>
+                <p>이제 소비자는 네이버나 구글 같은 포털 검색을 통한 단순 비교를 넘어 제미나이(Gemini)나 챗지피티(ChatGPT) 같은 고성능 언어 AI 모델을 탑재한 어플/앱 서비스를 이용합니다. 이를 통해 실시간으로 다양한 브랜드의 평균 견적을 정밀 계산하여 자신의 상황에 딱 맞는 요금제를 비교 분석하는 스마트한 재테크를 실행하고 있습니다.</p>
+            </div>
+            
+            <p>어린 자녀를 둔 부모뿐만 아니라 20대와 30대 청년층 사이에서도 이른바 가성비의 끝판왕으로 통했던 어른이보험에 대한 관심이 지속되고 있습니다. 비록 제도 변화로 명칭은 변경되었으나 보장 구조를 그대로 계승한 우수한 청년 전용 상품들이 지속 출시되고 있어, 가입 전에 정확한 장단점과 연령별 특징을 살펴보는 눈이 필요합니다.</p>
+        </section>
+
+        <!-- 섹션 2: 연령별 정밀 비교 -->
+        <section>
+            <span id="age-comparison" class="anchor"></span>
+            <h2>연령대별 성장 단계에 따른 세부 특약 구성 및 리스크 분석</h2>
+            <p>보험을 가입할 때 가장 먼저 파악해야 할 것은 아이의 현재 나이와 다가올 발달 단계의 건강 위험 요소입니다. 태아 단계부터 청년 막바지인 만 35세까지 연령대에 맞는 보장 우선순위를 꼼꼼하게 대조해야 낭비 없는 최저가 요금제 설계가 가능합니다. 아래의 가이드는 각 나이대별로 반드시 챙겨야 할 중점 특약과 리스크를 자세하게 정리해 줍니다.</p>
+
+            <h3>태아기부터 학령기 이전 영유아기 (태아, 0세, 1세, 2세, 3세, 4세, 5세)</h3>
+            <p>이 시기는 출생 직후 발생할 수 있는 선천적 장애나 미숙아 관련 입원비 보장률을 극대화해야 합니다. 또한 일상생활 중 일어나는 자잘한 상해 사고와 환경성 질환 대처에 집중해야 합니다.</p>
+            <ul>
+                <li><strong>태아 및 0세:</strong> 저체중아 출산, 선천성 횡격막 탈장 등 선천이상 수술비와 인큐베이터 입원 일당 확보가 최우선입니다.</li>
+                <li><strong>1세 및 2세:</strong> 걸음마를 시작하며 가구 모서리 부딪힘, 가정 내 전도, 뜨거운 물에 의한 화상 사고 위험도가 매우 높아집니다. 이에 대비해 화상 수술비 및 중증 화상진단 특약을 탄탄히 다집니다.</li>
+                <li><strong>3세, 4세, 5세:</strong> 어린이집과 놀이터 등 공동육아 및 단체생활의 시작으로 유행성 독감, 수족구병, 급성 장염 등 전염성 질환으로 인한 아동 병원비 지출이 잦아지는 시기입니다.</li>
+            </ul>
+
+            <h3>아동기 및 초등학교 입학 단계 (6세, 7세, 8세, 9세, 10세, 11세)</h3>
+            <p>본격적인 실외 체육 활동과 학교생활이 시작되면서 야외 안전사고와 발달기 건강 보장에 집중해야 하는 단계입니다.</p>
+            <ul>
+                <li><strong>6세 및 7세:</strong> 성장 발달 속도에 따른 성조숙증 정밀 검사나 소아 천식, 알레르기 질환의 빈도가 잦아지므로 전용 담보를 가용합니다.</li>
+                <li><strong>8세, 9세, 10세:</strong> 초등학교 등하교를 시작하면서 어린이 보호구역(스쿨존) 교통사고 및 골절 사고가 빈번히 발생합니다. 5대 골절 진단비와 성장판 손상 사고 담보를 강화하십시오.</li>
+                <li><strong>11세:</strong> 학업용 디지털 디바이스 장시간 이용으로 인한 안과 질환 및 척추측만증 같은 자세 불균형 질환 예방 보장 체계를 수립합니다.</li>
+            </ul>
+
+            <h3>청소년기 및 청년 진입 전환기 (12세, 13세, 14세, 15세, 16세, 17세, 18세, 19세, 20세)</h3>
+            <p>순수 자녀 담보의 마무리와 가성비 높은 청년 종합 담보를 비교 연계할 수 있는 골든타임의 초입입니다.</p>
+            <ul>
+                <li><strong>12세, 13세, 14세:</strong> 청소년 사춘기 스트레스로 발현되는 원형 탈모, 치아 부정교합 치료 및 정신건강(ADHD, 소아 우울증) 상담 보완에 나섭니다.</li>
+                <li><strong>15세:</strong> 금융감독원 가이드라인상 순수 어린이 상품 가입을 마무리 지을 수 있는 마지노선입니다. 보장 단가가 낮을 때 성인형 3대 질환 보장 뼈대를 최종 확보하는 전략이 추천됩니다.</li>
+                <li><strong>16세, 17세, 18세:</strong> 청년 전용 건강 상품 가입이 시작되는 구간으로, 암 감액 기간 면제 특약을 통해 가입 즉시 보장률을 100퍼센트 가져갈 수 있습니다.</li>
+                <li><strong>19세 및 20세:</strong> 고등학교 졸업 및 대학교 입학, 사회 진출 첫걸음 단계로 야외 레저 활동, 여행 중 발생 가능한 일상 배상 및 재해 위험 보장을 설계합니다.</li>
+            </ul>
+
+            <h3>20대 중반 및 사회초년생 도약기 (21세, 22세, 23세, 24세, 25세, 26세, 27세, 28세)</h3>
+            <p>직장 생활을 시작하며 본인의 소득으로 독립적인 포트폴리오를 구성하는 단계로, 무해지 환급형 선택을 통해 납입 단가를 아끼는 현명한 계산이 빛을 발하는 때입니다.</p>
+            <ul>
+                <li><strong>21세, 22세, 23세:</strong> 건강 상태가 매우 양호하여 보험료가 제일 싼곳을 찾기 쉬우며 간편 심사 패스 기회가 늘어납니다.</li>
+                <li><strong>24세 및 25세:</strong> 장기 비갱신형 요금제로 주계약을 고정해 평생 유지할 수 있는 암 진단 자금을 저렴하게 채워 넣기 좋은 나이대입니다.</li>
+                <li><strong>26세, 27세, 28세:</strong> 초기 사회생활 피로 축적과 잘못된 식습관으로 유발될 수 있는 대장 용종 제거 수술비나 20대 여성 자궁 근종, 유방 양성 종양 절제 등 생활 질환 특약을 다이렉트 온라인 설계로 보강합니다.</li>
+            </ul>
+
+            <h3>30대 직장인 및 청년 만기 임계기 (29세, 30세, 31세, 32세, 33세, 34세, 35세)</h3>
+            <p>청년용 건강 보험(과거 어른이보험) 혜택을 마지막으로 가입 신청할 수 있는 막차 시기이므로 브랜드별 순위 비교와 전문가 일대일 상담 컨설팅 활용이 매우 절실해지는 연령대입니다.</p>
+            <ul>
+                <li><strong>29세 및 30세:</strong> 서른 살 전후로 성인형 전용 상품 대비 최대 20퍼센트까지 아낄 수 있는 청년 가성비 특약 종류를 꼼꼼하게 장바구니에 담아 가입을 매듭지어야 합니다.</li>
+                <li><strong>31세, 32세, 33세:</strong> 정기 건강검진을 통해 고혈압, 당뇨 등 경계성 소견이 나오기 직전에 심혈관 질환 진단비를 보강하는 비갱신 요금제를 완비합니다.</li>
+                <li><strong>34세 및 35세:</strong> 청년 상품 종류 가입 가능 나이의 완전한 종착역입니다. 이 연령대를 초과하면 동일 담보를 세팅할 때 비용 지출이 기하급수적으로 높아지므로, 성지가 되는 온라인 비교 사이트 좌표를 활용해 최저가 가성비 설계를 받아 두기를 권장합니다.</li>
+            </ul>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연령 구분</th>
+                            <th>대표 연령대</th>
+                            <th>주요 위협 질병 및 상해 리스크</th>
+                            <th>필수 탑재 보장 특약 추천</th>
+                            <th>예상 평균 월 납입금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>영유아기</td>
+                            <td>태아 ~ 만 5세</td>
+                            <td>선천이상 유전질환, 저체중, 가정 내 전도/화상 상해</td>
+                            <td>신생아 질병입원일당, 선천이상수술비, 화상수술비</td>
+                            <td>월 3만원 ~ 6만원대</td>
+                        </tr>
+                        <tr>
+                            <td>아동 학령기</td>
+                            <td>만 6세 ~ 만 11세</td>
+                            <td>스쿨존 교통사고, 낙상으로 인한 골절, 성조숙증, 소아천식</td>
+                            <td>골절진단비(성장판포함), 성조숙증진단비, 일상배상책임</td>
+                            <td>월 4만원 ~ 7만원대</td>
+                        </tr>
+                        <tr>
+                            <td>청소년기</td>
+                            <td>만 12세 ~ 만 18세</td>
+                            <td>척추측만증, 부정교합, 스트레스성 정신불안, ADHD</td>
+                            <td>치과보장 특약, 도수치료 실손 연계, 정신건강상담 특약</td>
+                            <td>월 5만원 ~ 8만원대</td>
+                        </tr>
+                        <tr>
+                            <td>청년 가입기</td>
+                            <td>만 19세 ~ 만 28세</td>
+                            <td>대외 상해사고, 위염 등 소화기 질환, 초기 양성종양</td>
+                            <td>3대 질병 진단비(암, 뇌, 심혈관), 수술비 종합플랜</td>
+                            <td>월 6만원 ~ 9만원대</td>
+                        </tr>
+                        <tr>
+                            <td>청년 막차기</td>
+                            <td>만 29세 ~ 만 35세</td>
+                            <td>3대 성인 질환 초기 증상, 생식기 질환, 혈관 경화</td>
+                            <td>무해지환급형 비갱신 3대 진단비 세트, 중증 수술비</td>
+                            <td>월 7만원 ~ 12만원대</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 섹션 3: 어린이 VS 청년보험 -->
+        <section>
+            <span id="versus-comparison" class="anchor"></span>
+            <h2>어린이보험과 청년보험의 장단점 및 명확한 차이점 분석</h2>
+            <p>과거에는 만 30세, 혹은 35세 직장인도 어린이 상품에 무난하게 이름을 올려 가입할 수 있어 어른이보험이라는 별칭이 대유행을 끌었습니다. 하지만 2023년 하반기 금융감독원의 불합리성 개선 가이드라인 도입으로 만 15세 초과 상품에는 어린이라는 타이틀의 기재가 원천 제한되었습니다.</p>
+            
+            <p>따라서 오늘날에는 다음과 같이 상품군이 명확하게 삼원화되었으며, 각각의 세부 구조와 가격대 및 가입 연령 제한에서 뚜렷한 차이점을 지닙니다.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>비교 항목</th>
+                            <th>순수 어린이보험</th>
+                            <th>청년보험 (구 어른이보험)</th>
+                            <th>일반 성인 종합보험</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>가입 연령</strong></td>
+                            <td>0세 ~ 만 15세 이하</td>
+                            <td>만 16세 ~ 만 35세 (일부 40세)</td>
+                            <td>만 19세 이상 제한 없음</td>
+                        </tr>
+                        <tr>
+                            <td><strong>평균 가격 수준</strong></td>
+                            <td>매우 저렴함 (위험률 최저 산정)</td>
+                            <td>성인형 대비 약 10% ~ 20% 저렴</td>
+                            <td>표준 사업비 적용으로 요금 높음</td>
+                        </tr>
+                        <tr>
+                            <td><strong>암 진단 감액기간</strong></td>
+                            <td>대체로 감액 기간 없이 즉시 100% 보장</td>
+                            <td>감액 기간 면제 상품 다수 포진</td>
+                            <td>90일 면책 및 1년 이내 50% 감액 일반적</td>
+                        </tr>
+                        <tr>
+                            <td><strong>사망 연계 특약</strong></td>
+                            <td>사망 담보 의무 연계 원천 없음</td>
+                            <td>사망 담보를 최소화하여 설계 가능</td>
+                            <td>의무 사망 연계로 월 고정 비용 상승</td>
+                        </tr>
+                        <tr>
+                            <td><strong>납입면제 범위</strong></td>
+                            <td>유사암, 유사 질환까지 폭넓게 인정</td>
+                            <td>일반 성인형보다 유연한 면제 조건</td>
+                            <td>상대적으로 면제 허들이 매우 높음</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>어린이 및 청년 특화 상품의 독보적 장점</h3>
+            <ul>
+                <li><strong>탁월한 가성비:</strong> 젊고 건강한 신체를 피보험자로 규정하므로 보험사가 안게 되는 리스크가 낮아 평균 월 요금이 대폭 줄어듭니다.</li>
+                <li><strong>높은 보장 한도:</strong> 성인 전용 종합상품에서는 수백만 원 단위에 불과한 뇌혈관 및 허혈성 심장질환 진단비 한도를 수천만 원 상당까지 든든하게 설정할 수 있습니다.</li>
+                <li><strong>감액 기간 불필요:</strong> 보장에 불리하게 작용하는 초기 감액 조건이 최소화되어 가입 당일부터 풍성한 안심 혜택을 온전히 가져갑니다.</li>
+            </ul>
+
+            <div class="alert-box">
+                <h4>주의해야 할 단점과 계약 시 유의점</h4>
+                <p>가장 치명적인 단점은 중도 해지 시 불이익입니다. 특히 가성비를 위해 무해지 환급형 종류를 고를 경우, 납입 기간 중에 사정상 해지하면 단 1원의 환급금도 돌려받지 못하므로 가계 유동성에 부담을 줄 수 있습니다. 반드시 납입 가능한 현실적 예상 금액 한도 안에서 요금제를 확정하셔야 장기간 안정적인 평생 우산으로 유지할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- 섹션 4: 예상 비용 및 계산기 -->
+        <section>
+            <span id="cost-calculator" class="anchor"></span>
+            <h2>다이렉트 어린이보험 예상 비용 계산기 및 가장 저렴한곳 탐색법</h2>
+            <p>다양한 브랜드를 통틀어 월 평균 발생하는 요금 수준은 과연 얼마일까요? 그리고 부모님이나 본인이 직접 인터넷과 모바일을 이용하여 견적을 셀프로 산출하고 계산하는 효율적인 방법은 무엇일까요? 이 해답을 위해 유통 경로에 따른 구조적 차이를 확인하고 합리적인 가입 요령을 터득해야 합니다.</p>
+
+            <div class="chart-container">
+                <div class="chart-title">가입 경로에 따른 동일 보장 대비 월 평균 보험료 지수 비교 (기준: 100%)</div>
+                
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span>오프라인 설계사 대면 채널 (설계사 수당 등 각종 사업비 포함)</span>
+                        <span>120% (평균 요금 높음)</span>
+                    </div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill accent" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span>온라인 다이렉트 개인 직접 가입 (인터넷 공식 홈페이지 활용)</span>
+                        <span>100% (가성비 양호)</span>
+                    </div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 83%;"></div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span>전문 통합 비교 플랫폼 컨설팅 (모든 브랜드 종합 대조 및 할인 혜택 조합)</span>
+                        <span>90% ~ 95% (최저가 실현)</span>
+                    </div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>셀프 견적 계산기를 다루는 순서</h3>
+            <ol>
+                <li>토스 앱이나 제휴 모바일 비교 어플을 스마트폰에 내려받습니다.</li>
+                <li>피보험 자녀의 나이(태아 여부, 0세부터 35세 중 해당 나이)와 성별을 정확히 입력합니다.</li>
+                <li>30세 만기 일시 전환 가성비 플랜과 100세 만기 비갱신 안정형 플랜 종류 중 원하는 만기 구조를 고릅니다.</li>
+                <li>암, 뇌혈관, 심혈관 진단 한도 설정 버퍼를 상하로 움직이며 매칭되는 실시간 월 예상 견적 가격을 체크합니다.</li>
+                <li>최종 마음에 드는 구조가 완비되면 해당 브랜드의 할인 제약 조건과 납입 면제 범위를 꼼꼼하게 메모해 둡니다.</li>
+            </ol>
+            
+            <p>물론 다이렉트 자가 계산은 사용법이 간편하다는 이점이 있지만, 수백 개에 달하는 특약 중에서 우리 자녀에게 꼭 불필요한 중복 담보를 전문적으로 걸러내는 일에는 한계가 따릅니다. 따라서 우선 다이렉트 어플로 대략적인 요금 감을 잡은 후, 다년의 노하우를 가진 전문 컨설팅 업체의 무료 비교 상담을 접목하는 방식이 똑똑한 성지로 거듭나는 비결입니다.</p>
+        </section>
+
+        <!-- 섹션 5: 커뮤니티 후기 -->
+        <section>
+            <span id="community-reviews" class="anchor"></span>
+            <h2>인터넷 커뮤니티의 생생한 내돈내산 후기와 설계 좌표 검증</h2>
+            <p>실제 부모들이 모여 날카로운 후기를 남기는 온라인 소통방(예: 디시인사이드 보험 갤러리, 보배드림 자녀 게시판, 펨코 및 에펨코리아 육아 정보방)은 날것 그대로의 고급 정보가 살아 숨 쉬는 보물창고입니다. 각종 홍보성 허위 정보를 걷어내고 내돈내산으로 직접 돈을 지출하며 깨달은 지혜를 취합하여 최선의 계약 방향성을 복기할 수 있습니다.</p>
+
+            <div class="info-box">
+                <h4>커뮤니티(디시, 보배드림, 펨코 등) 누적 계약 후기 종합 핵심 요약</h4>
+                <ul>
+                    <li><strong>과도한 첫날 입원비 일당 욕심은 금물:</strong> 월 1만원이 넘는 입원 일당 특약을 무리하게 추가하느니, 그 돈으로 실손 보장을 보완하고 저축에 투자하는 게 현명하다는 평이 압도적입니다.</li>
+                    <li><strong>가장 선호하는 설계 좌표의 조합 비율:</strong> 최근에는 30세 만기 저가형 베이스에 주요 대형 3대 진단 특약만 100세 비갱신형으로 혼합하여 요금 합리성을 실현하는 조합설계 방식이 대유행을 달성했습니다.</li>
+                    <li><strong>상담 딜러 필터링 요령:</strong> 사은품이나 현금지원 지원금 액수만 과도하게 자랑하며 기본 설계를 흐릿하게 잡는 곳은 나중에 청구 대행이나 사후 관리 시 고객센터 불통으로 크게 피눈물을 흘릴 가능성이 크다고 하니 조심하셔야 합니다.</li>
+                </ul>
+            </div>
+            
+            <p>또한 인스타그램, 페이스북, 유튜브 등 소셜미디어상에서 활동하는 수많은 자산 관리 크리에이터들의 실제 매칭 사례 영상들을 가볍게 시청해 보는 것도 어떤 종류의 특약이 가성비가 높은지 스스로 판단 능력을 키우는 데 지대한 영양분이 됩니다.</p>
+        </section>
+
+        <!-- 섹션 6: 가입 혜택 가이드 -->
+        <section>
+            <span id="benefits-event" class="anchor"></span>
+            <h2>신규 가입 혜택 및 현금지원, 사은품 이벤트 100퍼센트 활용법</h2>
+            <p>매월 고정 지출을 수반하는 금융 상품의 성격상, 첫 계약 단계에서 확보할 수 있는 신규 등록 프로모션 정보는 절대 소홀히 넘길 수 없는 절약 이정표입니다. 주요 브랜드 본사 차원의 마케팅 지원과 대형 비교 전문 대리점들의 다채로운 현금지원 성지 혜택이 상시 격돌하고 있기 때문입니다.</p>
+
+            <h3>대표적인 사은품 및 지원금 프로모션 종류</h3>
+            <ul>
+                <li><strong>프리미엄 출산 및 육아 사은품:</strong> 태아 시기 또는 영유아 단계에서 일정 요금 이상 신규 계약을 달성하면 유모차, 카시트, 젖병 소독기 등 실효성 높은 고급 육아용품을 제안받을 수 있습니다.</li>
+                <li><strong>백화점 및 마트 상품권 지급 이벤트:</strong> 비대면 다이렉트 모바일 채널로 신속하게 셀프 가입을 체결하는 청년층을 위해, 첫 달 납입 요금의 100% 수준을 모바일 상품권 기프티콘 등으로 되돌려주는 시즌성 행사가 지속 전개되고 있습니다.</li>
+                <li><strong>캐시백 및 간편 결제 포인트 적립:</strong> 카카오톡, 텔레그램, 토스 등과 연동된 비교 어플로 진입 시, 해당 결제 시스템의 머니나 포인트를 즉각 적립해 주는 연동 마케팅도 상당한 실속을 전합니다.</li>
+            </ul>
+
+            <div class="alert-box">
+                <h4>불법 과다 현금 지원 과대 광고의 함정 경고</h4>
+                <p>간혹 인터넷 커뮤니티나 음성적인 카페 단속망 등에서 법정 한도를 수배 초과하는 거액의 일시불 현금지원을 무기로 계약을 강제 종용하는 사례가 포착되곤 합니다. 이는 엄연히 보험업법상 위반 소지가 다분하여 추후 계약 자체가 원천 해지되거나 분쟁 시 보장금 청구가 어려워지는 사태를 야기할 수 있으므로, 반드시 합법적인 공인 전문 업체의 울타리 안에서 안심하고 지원 혜택을 조율하시는 것이 뒤탈 없이 영리한 소비생활을 구축하는 안전핀입니다.</p>
+            </div>
+        </section>
+
+        <!-- 섹션 7: 자주 묻는 질문 FAQ -->
+        <section>
+            <span id="faq-section" class="anchor"></span>
+            <h2>자녀 및 청년보험에 대해 빈번하게 제기되는 핵심 궁금증 (FAQ)</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Q1: 30세 만기와 100세 만기 중 과연 자녀에게 무엇을 설계해 주는 것이 유리한가요?</div>
+                    <div class="faq-answer">A: 30세 만기는 월 평균 부담 요금이 매우 싼곳을 실현할 수 있다는 압도적 매력이 있는 대신, 서른 살 시점에 병력 이력이 있으면 새 보험 인수가 거절된다는 한계가 있습니다. 반면 100세 만기는 긴 보장을 가져가 마음이 평온한 대신 월 납입 비용이 무겁습니다. 따라서 최근에는 핵심 3대 암 진단비만 100세 비갱신형으로 뽑고, 소모적 자잘한 입원비만 30세로 축소 배치하는 지능적인 혼합 조합설계 방식이 전문가들 사이에서 가장 추천을 얻고 있습니다.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q2: 다이렉트 다자간 플랫폼 비교와 단일 전용 홈피 청구의 차이점은 어떻게 되나요?</div>
+                    <div class="faq-answer">A: 특정 단일 브랜드 다이렉트 직영 홈페이지는 오로지 자신들의 단독 상품 요금제만 대조하기 때문에, 시장 내 타사 최신 조건과 대조할 수 없다는 블라인드가 있습니다. 대리형 비교 플랫폼은 모든 우수 기업의 견적서를 일시에 시뮬레이션해 주기 때문에 객관적으로 가격이 제일 싼곳을 골라내는 속도가 대단히 신속합니다.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Q3: 만 30세가 넘은 성인도 청년 상품에 편입하여 등록하는 일이 진짜 실익이 있을까요?</div>
+                    <div class="faq-answer">A: 네, 여전히 실익이 매우 지대합니다. 만 35세 이하에 해당하는 청년층이라면 성인 종합 요금 대비 약 10퍼센트 이상의 직접적인 납입료 할인율을 세이브할 수 있으며, 주계약 사망 연계 불필요 조항 덕택에 정작 암에만 온전히 집중되는 최고 등급의 가성비 성벽을 마련해 둘 수 있기 때문입니다.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 섹션 8: 실시간 견적 상담 -->
+        <section>
+            <span id="consulting-form" class="anchor"></span>
+            <h2>스마트 1:1 어린이 및 청년보험 맞춤 컨설팅 신청</h2>
+            <p>다년간 축적된 정교한 자산 분석 데이터를 토대로 고객님의 가용 예산 범위와 필수 집중 건강 보장 요건을 대입하여 가장 경제적이고 튼튼한 최상의 요금 플랜을 대조해 드립니다. 아래의 세부 정보들을 성실하게 체크하여 남겨주시면, 공인 자격을 보유한 비교 전문 컨설팅 마스터가 24시간 이내에 면밀하게 기획된 맞춤 분석 보고서를 지참해 무상으로 친절하게 연락을 드립니다.</p>
+            
+            <div class="form-container">
+                <form action="/submit-insurance-consulting" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="parent_name">상담 신청자 성함 <span class="required">필수</span></label>
+                            <input type="text" id="parent_name" name="parent_name" required placeholder="예: 홍길동">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone_number">안내받으실 연락처 <span class="required">필수</span></label>
+                            <input type="tel" id="phone_number" name="phone_number" required placeholder="예: 010-1234-5678" pattern="[0-9\-]+">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="child_age">피보험 대상 연령대 선택 <span class="required">필수</span></label>
+                            <select id="child_age" name="child_age" required>
+                                <option value="">선택하세요</option>
+                                <option value="태아기">임신 중 태아 (태아보험 종류 문의)</option>
+                                <option value="영유아기">0세 ~ 5세 영유아기 자녀</option>
+                                <option value="아동초등">6세 ~ 11세 아동초등 및 학령기 자녀</option>
+                                <option value="청소년">12세 ~ 15세 사춘기 및 청소년 자녀</option>
+                                <option value="청년진입">16세 ~ 25세 청년 진입 및 사회초년생 본인</option>
+                                <option value="청년막차">26세 ~ 35세 청년 막차 및 종합형 대비 본인</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">피보험자 성별 구성</label>
+                            <select id="gender" name="gender">
+                                <option value="">선택하세요</option>
+                                <option value="남아/남성">남아 또는 남성</option>
+                                <option value="여아/여성">여아 또는 여성</option>
+                                <option value="태아확인중">임신 중 (성별 미확인 포함)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget_range">희망 월 평균 납입 예산</label>
+                            <select id="budget_range" name="budget_range">
+                                <option value="">선택하세요</option>
+                                <option value="3만원대">월 3만원 대 (알뜰 실속형)</option>
+                                <option value="5만원대">월 5만원 대 (평균 표준형)</option>
+                                <option value="8만원대">월 8만원 대 (종합 보장 강화형)</option>
+                                <option value="10만원이상">월 10만원 이상 (완전 무결 프리미엄형)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact_channel">희망 실시간 안내 채널</label>
+                            <select id="contact_channel" name="contact_channel">
+                                <option value="카카오톡">카카오톡 일대일 채팅 상담</option>
+                                <option value="전화상담">전문 설계사 직접 유선 전화상담</option>
+                                <option value="문자전송">핵심 견적 요약 문자 메시지 전송</option>
+                                <option value="이메일">상세 대조표 PDF 이메일 발송</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="prior_illness">피보험 대상자 최근 치료 이력 여부</label>
+                            <select id="prior_illness" name="prior_illness">
+                                <option value="없음">최근 3개월 이내 내원 및 5년 이내 입원/수술 이력 일절 없음 (건강체 할인 대상)</option>
+                                <option value="단순감기">단순 감기, 피부염, 발치 등 자잘한 통원 치료만 있음</option>
+                                <option value="기왕력존재">수술, 장기 입원 또는 주기적 약물 복용 이력 있음 (유병자 청년형 검토)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="extra_comment">상담 요청 추가 사항</label>
+                            <textarea id="extra_comment" name="extra_comment" rows="4" placeholder="예: 무해지 환급형 다이렉트 최저가 요금제를 희망합니다. 신규 가입 혜택 상품권 이벤트나 사은품 지원금 혜택이 적용 가능한 등급인지 궁금합니다. 특히 소아 백혈병 등 암 진단비 단가를 크게 잡아보고 싶습니다."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="privacy_agree" name="privacy_agree" required>
+                        <label for="privacy_agree">개인정보 수집 및 제3자 제공 동의 (본 수집 정보는 최적의 보험료 비교를 위한 맞춤 설계 안내 및 금융 혜택 전송 목적 이외에는 일절 다른 곳에 이용되거나 공유되지 않습니다.) [필수]</label>
+                    </div>
+
+                    <div class="form-submit-container">
+                        <button type="submit" class="form-submit-btn">무료 맞춤 비교 견적 제안서 신청하기</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="links-box">
+                <h4>신뢰할 수 있는 공식 행정 및 금융 안내 사이트 정보</h4>
+                <ul>
+                    <li>
+                        <strong>금융위원회 등록 안심 플랫폼:</strong> 
+                        <a href="https://childetopbohumv.directreliable.com" target="_blank" rel="noopener">reliabledone 통합 금융 자산 비교 센터 (insurance.reliabledone.com)</a>
+                    </li>
+                    <li>
+                        <strong>공공 지식 정보 네트워크:</strong> 
+                        <a href="https://namu.wiki/w/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">나무위키 어린이보험 정의 및 금융 상식 (namu.wiki)</a>
+                    </li>
+                    <li>
+                        <strong>금융 정보 보호 허브:</strong> 
+                        <a href="https://www.fss.or.kr" target="_blank" rel="noopener">금융감독원 공식 홈페이지 소비자 권익 실현 센터 (fss.or.kr)</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
-  </body>
-</html>
+
+  
